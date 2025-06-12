@@ -69,11 +69,18 @@ def gif_prepare(name):
   return total, duration, test_images
 
 def webcam_prepare():
-  capture_dir = './capture/'
-  shutil.rmtree(capture_dir)
-  os.mkdir(capture_dir)
-  cap = cv2.VideoCapture(0)
-  return cap, capture_dir
+    capture_dir = './capture/'
+
+    # Hapus folder jika sudah ada
+    if os.path.exists(capture_dir):
+        shutil.rmtree(capture_dir)
+
+    # Buat folder baru
+    os.makedirs(capture_dir)
+
+    # Mulai kamera
+    cap = cv2.VideoCapture(0)
+    return cap, capture_dir
 
 def mp4_prepare(name):
   cap = cv2.VideoCapture('./image/'+name)
