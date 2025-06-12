@@ -1,9 +1,14 @@
+import os
 import torch
 import cv2
 import time
 import argparse
 from cartoonGAN_generator import Net
 from function import function
+
+# This capture folder are need to be there!
+if not os.path.exists("capture"):
+    os.makedirs("capture")
 
 parser = argparse.ArgumentParser(description='cartoonGAN')
 parser.add_argument('--file_name', type=str, default=None,
